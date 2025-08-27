@@ -1,4 +1,4 @@
-module main
+module zat
 
 go 1.25.0
 
