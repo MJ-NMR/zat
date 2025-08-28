@@ -1,0 +1,10 @@
+# game play
+	@ round
+		- lose the round if the one of the enemy has reached the end of the road
+		- win the round if all the enemyies die
+	@ game
+		- win if you win 80% or more of the rounds
+# Enemy
+	@ normal
+	- health 100 hp
+	- speed 10 km/s
