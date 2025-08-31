@@ -7,19 +7,18 @@ import (
 )
 
 type model struct {
-	name string
-	width int
+	name   string
+	width  int
 	height int
 }
 
-
 func (m model) Init() tea.Cmd {
 	return nil
-}	
+}
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
-	
+
 	case tea.WindowSizeMsg:
 		m.height = msg.Height
 		m.width = msg.Height
@@ -29,7 +28,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		switch msg.String() {
 
 		case "ctrl+c", "q":
-            return m, tea.Quit
+			return m, tea.Quit
 		}
 
 	}
@@ -45,7 +44,7 @@ func (m model) View() string {
 }
 
 func main() {
-	app := tea.NewProgram(model{},tea.WithAltScreen())
+	app := tea.NewProgram(model{}, tea.WithAltScreen())
 	if _, err := app.Run(); err != nil {
 		log.Panic(err)
 	}
