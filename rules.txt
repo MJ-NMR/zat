@@ -5,6 +5,9 @@
 	@ game
 		- win if you win 80% or more of the rounds
 # Enemy
-	@ normal
-	- health 100 hp
-	- speed 10 km/s
+	@ wallker
+		- health 100 hp
+		- speed 10 km/s
+
+# Warrier
+	- His hp is the nomber of round that he can lives

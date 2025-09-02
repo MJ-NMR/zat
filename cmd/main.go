@@ -2,11 +2,13 @@ package main
 
 import (
 	"log"
+	"zat/backend"
 
 	tea "github.com/charmbracelet/bubbletea"
 )
 
 type model struct {
+	frame backend.Frame
 	name   string
 	width  int
 	height int
