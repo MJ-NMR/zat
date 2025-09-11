@@ -1,10 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"log"
+
 	//"math/rand"
 	"zat/backend"
+	"zat/frontend"
 
 	tea "github.com/charmbracelet/bubbletea"
 )
@@ -47,7 +48,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m model) View() (s string) {
 	for y := range len(m.status) {
 		for x := range len(m.status[0]) {
-			s += fmt.Sprintf("%T ", m.status[y][x])
+			s += frontend.AssciCell(m.status[y][x])
 		}
 		s += "\n"
 	}
