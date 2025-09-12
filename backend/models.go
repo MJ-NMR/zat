@@ -8,39 +8,35 @@ type Cell interface {
 	index() (y, x int)
 }
 
-
-type Warrier struct {
-	Name     string
+type cell struct {
 	location struct{ x, y int }
-	Range    uint
-	speed    int
 }
 
-func (w Warrier) index() (y, x int) {
-	return w.location.y, w.location.x
+func (c cell) index() (y, x int) {
+	return c.location.y, c.location.x
+}
+
+type Warrier struct {
+	Name  string
+	Range uint
+	speed int
+	cell
 }
 
 type Monster struct {
-	Name     string
-	location struct{ x, y int }
-	Hp       int
-	speed    int
+	Name  string
+	Hp    int
+	speed int
+	cell
 }
 
-func (m Monster) index() (y, x int) {
-	return m.location.y, m.location.x
-}
-
-type blank struct {
+type Ground struct {
 	Name    string
-	location struct{ y, x int }
+	inRange []Warrier
+	cell
 }
 
-func (b blank) index() (y, x int) {
-	return b.location.y, b.location.x
-}
-
-func InitStatus(rows, cols int) Status {
+func RandomStatus(rows, cols int) Status {
 	st := make(Status, rows)
 	for y := range rows {
 		st[y] = make([]Cell, cols)
@@ -51,10 +47,9 @@ func InitStatus(rows, cols int) Status {
 				st[y][x] = &Warrier{}
 			case 1:
 				st[y][x] = &Monster{}
-			case 2:
-
+			default:
+				st[y][x] = &Ground{}
 			}
-			st[y][x] = &Warrier{}
 		}
 	}
 	return st

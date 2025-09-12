@@ -31,7 +31,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.WindowSizeMsg:
 		m.height = msg.Height
 		m.width = msg.Width
-		m.status = backend.InitStatus(m.height, m.width)
+		m.status = backend.RandomStatus(m.height, m.width)
 		return m, nil
 
 	case tea.KeyMsg:
