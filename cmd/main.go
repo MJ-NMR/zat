@@ -46,13 +46,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() (s string) {
-	for y := range len(m.status) {
-		for x := range len(m.status[0]) {
-			s += frontend.AssciCell(m.status[y][x])
-		}
-		s += "\n"
-	}
-	return s
+	return frontend.RenderStatus(m.status)
 }
 
 func initModel() tea.Model {
